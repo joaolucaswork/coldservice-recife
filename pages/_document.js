@@ -1,9 +1,17 @@
 import { Html, Head, Main, NextScript } from "next/document";
 
+import Script from "next/script";
 export default function Document() {
   return (
     <Html lang="pt-BR">
       <Head>
+        {process.env.NODE_ENV === "development" && (
+          <Script
+            src="//unpkg.com/react-grab/dist/index.global.js"
+            crossOrigin="anonymous"
+            strategy="beforeInteractive"
+          />
+        )}
         {/* Google Tag Manager */}
         <script
           dangerouslySetInnerHTML={{
