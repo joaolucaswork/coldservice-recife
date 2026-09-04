@@ -28,10 +28,10 @@ const RECIFE_NEIGHBORHOODS = [
 // Função ULTRA PRECISA para obter localização estilo Uber/iFood
 function getHighAccuracyPosition(options = {}) {
   const {
-    targetAccuracy = 10,     // 10 metros - precisão estilo Uber
-    goodEnoughAccuracy = 15, // Aceita após estabilizar
-    minStableReadings = 3,   // Mínimo de leituras estáveis
-    timeout = 60000          // 60 segundos máximo
+    targetAccuracy = 30,     // 30 metros - resolve rápido no desktop/mobile comum
+    goodEnoughAccuracy = 50, // Aceita após estabilizar
+    minStableReadings = 2,   // Mínimo de leituras estáveis
+    timeout = 20000          // 20 segundos máximo
   } = options;
 
   return new Promise((resolve, reject) => {
@@ -170,7 +170,16 @@ export default function Hero({ content, onOpenAtendimento, onLocationUpdate }) {
   const [tipFading, setTipFading] = useState(false);
   const [showOnboard, setShowOnboard] = useState(false);
   const [onboardReady, setOnboardReady] = useState(false); // Para evitar SSR/crawlers
+  const [isSearchingLocation, setIsSearchingLocation] = useState(false); // Feedback após permitir
   const hasAskedPermission = useRef(false);
+  const searchCancelledRef = useRef(false); // Evita setState após dispensar/desmontar
+
+  const dismissOnboard = () => {
+    searchCancelledRef.current = true;
+    setIsSearchingLocation(false);
+    setShowOnboard(false);
+    setLocationStatus((prev) => (prev === "asking-permission" ? "ip-found" : prev));
+  };
 
   // Marca como pronto para mostrar onboard apenas no client (crawlers não veem)
   useEffect(() => {
@@ -287,6 +296,8 @@ export default function Hero({ content, onOpenAtendimento, onLocationUpdate }) {
     if (!navigator.geolocation) return;
 
     hasAskedPermission.current = true;
+    searchCancelledRef.current = false;
+    let delayId = null;
 
     async function requestPreciseLocation() {
       // Verifica o estado da permissão antes de pedir
@@ -305,19 +316,24 @@ export default function Hero({ content, onOpenAtendimento, onLocationUpdate }) {
       if (permissionState === "denied" || permissionState === "granted") {
         return;
       }
+      if (searchCancelledRef.current) return;
 
       // Se é "prompt" (ainda não decidiu), mostra o onboard
       setShowOnboard(true);
       setLocationStatus("asking-permission");
 
       // Delay para o usuário ver o onboard antes do modal do navegador aparecer
-      setTimeout(async () => {
+      delayId = setTimeout(async () => {
+        if (searchCancelledRef.current) return;
+        setIsSearchingLocation(true); // usuário já viu o prompt: mostra "buscando..."
         try {
           const position = await getHighAccuracyPosition();
+          if (searchCancelledRef.current) return;
           const { latitude, longitude } = position.coords;
 
           // Tenta geocodificação reversa para nome real do bairro
           const geoResult = await reverseGeocode(latitude, longitude);
+          if (searchCancelledRef.current) return;
 
           if (geoResult) {
             // Usa posição no mapa baseada no bairro mais próximo da lista (para o visual)
@@ -335,14 +351,22 @@ export default function Hero({ content, onOpenAtendimento, onLocationUpdate }) {
           setLocationStatus("precise-found");
           setShowOnboard(false);
         } catch (error) {
+          if (searchCancelledRef.current) return;
           // Mantém a localização do IP e fecha o modal
           setLocationStatus("ip-found");
           setShowOnboard(false);
+        } finally {
+          if (!searchCancelledRef.current) setIsSearchingLocation(false);
         }
       }, 1500);
     }
 
     requestPreciseLocation();
+
+    return () => {
+      searchCancelledRef.current = true;
+      if (delayId) clearTimeout(delayId);
+    };
   }, [locationStatus]);
 
   // Rotating tips effect
@@ -363,8 +387,8 @@ export default function Hero({ content, onOpenAtendimento, onLocationUpdate }) {
       {/* Location Permission Onboard Modal - só renderiza no client após delay (SEO safe) */}
       {onboardReady && showOnboard && (
         <div className="fixed inset-0 z-[9999] flex items-center justify-center p-4">
-          {/* Backdrop */}
-          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" />
+          {/* Backdrop - clicável para dispensar */}
+          <div className="absolute inset-0 bg-black/60 backdrop-blur-sm" onClick={dismissOnboard} />
 
           {/* Modal */}
           <div className="relative bg-gradient-to-br from-[#1a2744] to-[#0d1526] border border-[#6bb8e8]/40 rounded-2xl p-6 shadow-2xl shadow-[#6bb8e8]/20 max-w-sm w-full animate-fade-up">
@@ -390,18 +414,26 @@ export default function Hero({ content, onOpenAtendimento, onLocationUpdate }) {
 
             {/* Instrução */}
             <div className="flex items-center justify-center gap-2 bg-[#6bb8e8]/10 border border-[#6bb8e8]/20 rounded-xl px-4 py-3 mb-4">
-              <div className="w-2 h-2 bg-[#6bb8e8] rounded-full animate-pulse" />
-              <span className="text-[#9dd1f1] text-sm">
-                Clique em "Permitir" no navegador
-              </span>
+              {isSearchingLocation ? (
+                <>
+                  <div className="w-4 h-4 border-2 border-[#6bb8e8] border-t-transparent rounded-full animate-spin" />
+                  <span className="text-[#9dd1f1] text-sm">
+                    Buscando sua localização...
+                  </span>
+                </>
+              ) : (
+                <>
+                  <div className="w-2 h-2 bg-[#6bb8e8] rounded-full animate-pulse" />
+                  <span className="text-[#9dd1f1] text-sm">
+                    Clique em "Permitir" no navegador
+                  </span>
+                </>
+              )}
             </div>
 
             {/* Botão Pular */}
             <button
-              onClick={() => {
-                setShowOnboard(false);
-                setLocationStatus("ip-found");
-              }}
+              onClick={dismissOnboard}
               className="w-full text-center text-[#9dd1f1]/60 hover:text-[#9dd1f1] text-sm py-2 transition-colors"
             >
               Pular
