@@ -37,7 +37,7 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-[#9dd1f1]/60 leading-relaxed max-w-md mb-6">
-              Especialistas em conserto de geladeiras em Recife e região metropolitana. Atendimento rápido, técnicos qualificados e garantia em todos os serviços.
+              Especialistas em conserto de geladeiras, máquinas de lavar, cervejeiras, expositores e balcão frio em Recife e região metropolitana. Atendimento rápido, técnicos qualificados e garantia em todos os serviços.
             </p>
             {/* Social proof */}
             <div className="flex items-center gap-2">

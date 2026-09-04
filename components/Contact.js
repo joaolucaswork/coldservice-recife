@@ -247,7 +247,7 @@ export default function Contact() {
                           name="problem"
                           value={formData.problem}
                           onChange={handleChange}
-                          placeholder="Descreva o problema com sua geladeira..."
+                          placeholder="Descreva o problema com seu equipamento..."
                           rows={4}
                           className={`w-full px-5 py-4 bg-[#f8f9fa] border-2 rounded-xl focus:ring-0 focus:border-[#6bb8e8] outline-none transition-colors resize-none text-[#131d35] placeholder-[#adb5bd] ${
                             errors.problem ? "border-red-500" : "border-transparent"

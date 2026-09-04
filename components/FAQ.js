@@ -18,7 +18,7 @@ export default function FAQ() {
             Perguntas <span className="text-gradient-orange">Frequentes</span>
           </h2>
           <p className="text-lg text-[#6c757d] max-w-2xl mx-auto leading-relaxed">
-            Tire suas dúvidas sobre nossos serviços de conserto de geladeira.
+            Tire suas dúvidas sobre nossos serviços de conserto de geladeiras, máquinas de lavar, cervejeiras, expositores e balcão frio.
           </p>
         </div>
 

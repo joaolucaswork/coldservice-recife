@@ -32,8 +32,8 @@ export default function Services({ highlightedService }) {
     return 0;
   });
 
-  // Show only top 6 services
-  const displayServices = sortedServices.slice(0, 6);
+  // Show all services (12) - grid lg:grid-cols-3 keeps layout balanced
+  const displayServices = sortedServices.slice(0, 12);
 
   return (
     <section id="servicos" className="py-20 md:py-28 bg-[#f8f9fa] relative overflow-hidden">
@@ -52,7 +52,7 @@ export default function Services({ highlightedService }) {
             Nossos <span className="text-gradient-orange">Serviços</span>
           </h2>
           <p className="text-lg text-[#6c757d] max-w-2xl mx-auto leading-relaxed">
-            Soluções completas para o conserto da sua geladeira, com técnicos especializados nas principais marcas.
+            Soluções completas para geladeiras, máquinas de lavar, cervejeiras, expositores e balcão frio, com técnicos especializados.
           </p>
         </div>
 
