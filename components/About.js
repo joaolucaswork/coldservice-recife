@@ -86,7 +86,7 @@ export default function About() {
                 Somos uma empresa especializada em <span className="text-white font-semibold">conserto de geladeiras, máquinas de lavar, cervejeiras, expositores e balcão frio</span> em Recife e região metropolitana. Com anos de experiência no mercado, oferecemos soluções rápidas e eficientes.
               </p>
               <p>
-                Nossa equipe de técnicos é treinada para atender todas as principais marcas: <span className="text-[#ff6b35] font-semibold">Brastemp, Electrolux, Consul, LG, Samsung</span> e muitas outras. Quando o conserto exige troca, aplicamos peças originais como parte do serviço — não vendemos peças avulsas — e oferecemos garantia em todos os serviços.
+                Nossa equipe atende <span className="text-[#ff6b35] font-semibold">Brastemp, Electrolux, Consul, LG, Samsung</span> e muitas outras, direto na sua casa. Não vendemos peça por fora — entregamos o aparelho gelando de novo, com 90 dias de garantia.
               </p>
               <p>
                 Acreditamos que ninguém deve ficar sem seus equipamentos funcionando. Por isso, oferecemos atendimento rápido, com possibilidade de visita no mesmo dia.
