@@ -50,7 +50,7 @@ export default function Differentials() {
             Por Que Nos <span className="text-gradient-orange">Escolher?</span>
           </h2>
           <p className="text-lg text-[#6c757d] max-w-2xl mx-auto leading-relaxed">
-            Somos referência em conserto de geladeiras em Recife. Confira os diferenciais que nos tornam a melhor escolha.
+            Somos referência em conserto de geladeiras, máquinas de lavar, cervejeiras, expositores e balcão frio em Recife. Confira os diferenciais que nos tornam a melhor escolha.
           </p>
         </div>
 

@@ -80,7 +80,7 @@ export default function Home({ personalizedContent, keyword }) {
         <title>{content.hero.headline} | {siteConfig.businessName}</title>
         <meta
           name="description"
-          content={`${content.hero.subheadline}. Conserto de geladeira em Recife com atendimento rápido, técnicos especializados e garantia de serviço. Ligue agora: ${siteConfig.phone}`}
+          content={`${content.hero.subheadline}. Conserto de geladeira, máquina de lavar, cervejeira, expositor e balcão frio em Recife com atendimento rápido, técnicos especializados e garantia de serviço. Ligue agora: ${siteConfig.phone}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />

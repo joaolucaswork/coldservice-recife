@@ -53,7 +53,7 @@ export default function HowItWorks() {
             Como <span className="text-gradient-orange">Funciona</span>
           </h2>
           <p className="text-lg text-[#9dd1f1]/80 max-w-2xl mx-auto leading-relaxed">
-            Em 4 passos simples, sua geladeira volta a funcionar. Sem complicação, sem burocracia.
+            Em 4 passos simples, seu equipamento volta a funcionar. Sem complicação, sem burocracia.
           </p>
         </div>
 
@@ -105,7 +105,7 @@ export default function HowItWorks() {
 
         {/* CTA - WCAG AA Compliant */}
         <div className="text-center">
-          <p className="text-[#9dd1f1]/60 mb-6">Pronto para resolver o problema da sua geladeira?</p>
+          <p className="text-[#9dd1f1]/60 mb-6">Pronto para resolver o problema do seu equipamento?</p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href={`tel:${siteConfig.phoneClean}`}

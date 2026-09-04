@@ -19,7 +19,7 @@ export default function ServiceAreas() {
             Onde <span className="text-gradient-orange">Atendemos</span>
           </h2>
           <p className="text-lg text-[#6c757d] max-w-2xl mx-auto leading-relaxed">
-            Atendemos toda Recife e região metropolitana. Técnico na sua casa em até 2 horas!
+            Atendemos toda Recife e região metropolitana, em residências e comércios. Técnico até você em até 2 horas!
           </p>
         </div>
 

@@ -83,13 +83,13 @@ export default function About() {
 
             <div className="space-y-6 text-[#9dd1f1]/80 text-lg leading-relaxed">
               <p>
-                Somos uma empresa especializada em <span className="text-white font-semibold">conserto de geladeiras e refrigeradores</span> em Recife e região metropolitana. Com anos de experiência no mercado, oferecemos soluções rápidas e eficientes.
+                Somos uma empresa especializada em <span className="text-white font-semibold">conserto de geladeiras, máquinas de lavar, cervejeiras, expositores e balcão frio</span> em Recife e região metropolitana. Com anos de experiência no mercado, oferecemos soluções rápidas e eficientes.
               </p>
               <p>
                 Nossa equipe de técnicos é treinada para atender todas as principais marcas: <span className="text-[#ff6b35] font-semibold">Brastemp, Electrolux, Consul, LG, Samsung</span> e muitas outras. Trabalhamos com peças originais e oferecemos garantia em todos os serviços.
               </p>
               <p>
-                Acreditamos que ninguém deve ficar sem geladeira funcionando. Por isso, oferecemos atendimento rápido, com possibilidade de visita no mesmo dia.
+                Acreditamos que ninguém deve ficar sem seus equipamentos funcionando. Por isso, oferecemos atendimento rápido, com possibilidade de visita no mesmo dia.
               </p>
             </div>
 

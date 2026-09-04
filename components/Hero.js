@@ -95,16 +95,18 @@ function getHighAccuracyPosition(options = {}) {
   });
 }
 
-// Dicas de cuidado com geladeira
+// Dicas de cuidado com seus equipamentos
 const FRIDGE_TIPS = [
   "Deixe espaço de 10cm atrás da geladeira para ventilação adequada",
-  "Limpe a borracha da porta com água e sabão neutro a cada 15 dias",
+  "Limpe a borracha da porta da geladeira com água e sabão neutro a cada 15 dias",
   "Nunca coloque alimentos quentes direto na geladeira",
+  "Limpe o filtro da máquina de lavar a cada 15 dias para evitar entupimentos",
+  "Não sobrecarregue a máquina de lavar — respeite a capacidade máxima",
+  "Mantenha a cervejeira bem ventilada e longe de fontes de calor",
   "Descongele o freezer quando o gelo passar de 1cm de espessura",
-  "Mantenha a geladeira longe do fogão e de áreas com sol direto",
+  "Mantenha geladeiras e expositores longe do fogão e de áreas com sol direto",
   "Verifique se a porta fecha bem — papel preso não deve cair",
-  "Ajuste a temperatura entre 3°C e 5°C para conservar melhor",
-  "Não bloqueie as saídas de ar internas com alimentos",
+  "Ajuste a temperatura da geladeira entre 3°C e 5°C para conservar melhor",
   "Limpe a serpentina traseira a cada 6 meses para maior eficiência",
   "Evite abrir a porta muitas vezes — isso força o motor",
 ];
@@ -436,11 +438,15 @@ export default function Hero({ content, onOpenAtendimento, onLocationUpdate }) {
 
             {/* Headline */}
             <h1 className="heading-display text-3xl sm:text-4xl lg:text-5xl xl:text-6xl text-white mb-4">
-              {headline.split(" ").map((word, i) => (
-                <span key={i} className={i === 0 || word.toLowerCase() === "geladeira" ? "text-gradient-orange" : ""}>
-                  {word}{" "}
-                </span>
-              ))}
+              {headline.split(" ").map((word, i) => {
+                const highlightWords = ["geladeira", "máquina", "maquina", "lavar", "cervejeira", "expositor", "balcão", "balcao"];
+                const isHighlight = i === 0 || highlightWords.includes(word.toLowerCase().replace(/[?!.,]/g, ""));
+                return (
+                  <span key={i} className={isHighlight ? "text-gradient-orange" : ""}>
+                    {word}{" "}
+                  </span>
+                );
+              })}
             </h1>
 
             {/* Subheadline */}
