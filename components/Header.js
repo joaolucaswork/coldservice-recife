@@ -35,19 +35,13 @@ export default function Header() {
           {/* Logo */}
           <a href="#" className="flex items-center gap-3 group">
             <div className="relative w-11 h-11">
-              {/* Animated background */}
-              <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b35] to-[#e55a2b] rounded-xl transform group-hover:scale-110 transition-transform duration-300" />
-              {/* Ice crystal icon */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M12 3v18m0-18l-4 4m4-4l4 4m-4 14l-4-4m4 4l4-4M3 12h18M3 12l4-4m-4 4l4 4m14-4l-4-4m4 4l-4 4"
-                  />
-                </svg>
-              </div>
+              <img
+                src="/logo.png"
+                alt="Cold Service Refrigeração"
+                width={44}
+                height={44}
+                className="w-11 h-11 object-contain transform group-hover:scale-110 transition-transform duration-300 drop-shadow-lg"
+              />
             </div>
             <div className="hidden sm:block">
               <span className="block text-lg font-bold text-white leading-tight">Cold Service</span>

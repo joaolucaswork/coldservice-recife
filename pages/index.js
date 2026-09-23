@@ -83,7 +83,11 @@ export default function Home({ personalizedContent, keyword }) {
           content={`${content.hero.subheadline}. Conserto de geladeira, máquina de lavar, cervejeira, expositor e balcão frio em Recife com atendimento rápido, técnicos especializados e garantia de serviço. Ligue agora: ${siteConfig.phone}`}
         />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+        <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+        <link rel="manifest" href="/site.webmanifest" />
 
         {/* Canonical URL */}
         <link rel="canonical" href={canonicalUrl} />
@@ -95,6 +99,7 @@ export default function Home({ personalizedContent, keyword }) {
         <meta property="og:locale" content="pt_BR" />
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:site_name" content={siteConfig.businessName} />
+        <meta property="og:image" content={`${siteConfig.siteUrl}/logo.png`} />
 
         {/* Twitter Card */}
         <meta name="twitter:card" content="summary_large_image" />
@@ -106,7 +111,7 @@ export default function Home({ personalizedContent, keyword }) {
         <meta name="geo.placename" content="Recife" />
 
         {/* Theme color */}
-        <meta name="theme-color" content="#2563eb" />
+        <meta name="theme-color" content="#0d1526" />
 
         {/* Preconnect to external domains */}
         <link rel="preconnect" href="https://fonts.googleapis.com" />

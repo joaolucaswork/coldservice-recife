@@ -23,14 +23,13 @@ export default function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <div className="flex items-center gap-3 mb-6">
-              <div className="relative w-12 h-12">
-                <div className="absolute inset-0 bg-gradient-to-br from-[#ff6b35] to-[#e55a2b] rounded-xl" />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <svg className="w-6 h-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v18m0-18l-4 4m4-4l4 4m-4 14l-4-4m4 4l4-4M3 12h18M3 12l4-4m-4 4l4 4m14-4l-4-4m4 4l-4 4" />
-                  </svg>
-                </div>
-              </div>
+              <img
+                src="/logo.png"
+                alt="Cold Service Refrigeração"
+                width={48}
+                height={48}
+                className="w-12 h-12 object-contain"
+              />
               <div>
                 <span className="block text-xl font-bold">{siteConfig.businessName}</span>
                 <span className="block text-xs text-[#9dd1f1]/60 uppercase tracking-wider">Refrigeração</span>
